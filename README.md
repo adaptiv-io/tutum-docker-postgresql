@@ -46,6 +46,19 @@ set the environment variable `POSTGRES_PASS` to your specific password when runn
 	docker run -d -p 5432:5432 -e POSTGRES_PASS="mypass" tutum/postgresql
 
 
+Setting Encoding and Collate on template
+---------------------------------
+
+If you want to modify template1 you can pass the following ENV vars:
+* PG_ENCODING
+* PG_COLLATE
+* PG_CTYPE
+
+You can choose to set just encoding if you wish.
+
+Example Usage:
+`docker run -d -p 5432:5432 -e POSTGRES_PASS="mypass" -e PG_ENCODING='UTF-8' -e LC_CTYPE = 'en_US.utf8' -e 'LC_COLLATE = 'en_US.utf8' tutum/postgresql`
+
 Mounting the database file volume
 ---------------------------------
 

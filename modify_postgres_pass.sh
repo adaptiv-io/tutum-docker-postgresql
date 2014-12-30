@@ -11,6 +11,10 @@ _word=$( [ ${POSTGRES_PASS} ] && echo "preset" || echo "random" )
 
 echo "=> Modifying 'postgres' user with a ${_word} password in PostgreSQL"
 sudo -u postgres psql -U postgres -d postgres -c "alter user postgres with password '$PASS';"
+echo 'making ~/.pgpass'
+# making it use pgpassword when authenticating as postgres user
+echo "*:*:*:postgres:$PASS" > "$HOME"/.pgpass
+chmod 0600 "$HOME"/.pgpass
 echo "=> Done!"
 touch /.postgres_pass_modified
 

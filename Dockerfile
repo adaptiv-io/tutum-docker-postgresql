@@ -16,8 +16,8 @@ RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
 VOLUME	["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 
 ADD modify_postgres_pass.sh ./modify_postgres_pass.sh
+ADD modify_postgres_template1.sh ./modify_postgres_template1.sh
 ADD run.sh /run.sh
-RUN chmod 755 /*.sh
 
 EXPOSE 5432
 CMD ["/run.sh"]
